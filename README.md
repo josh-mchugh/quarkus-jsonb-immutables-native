@@ -1,8 +1,41 @@
-# quarkus-jsonb-immutables-native
+# Quarkus Jsonb Immutables Native
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project was put together to verify that Jsonb and Immutables would work together with Quarkus Native builds. This project is an extension of the [Quarkus + Immutables + Jsonb Project](https://github.com/josh-mchugh/quarkus-immutables-jsonb).
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Objective: 
+
+Determine the requirements for using Jsonb and Immutables in a Quarkus Native application. 
+
+## Approach: 
+
+Create a simple project to demonstrate how to use Jsonb and Immutables in a RESTful JSON response with Quarkus Native. 
+
+## Conclusion
+
+Jsonb and Immutables can be used together in a Quarkus Native application and output a proper JSON response.
+
+The Immutables Abstract Class will need to be annotated with `@RegisterForReflection` for it to generate JSON within the native build.
+
+If the Immutables Abstract Class is not annotated with `@RegisterForReflection` it will return `{}` when the API is called within the native build.
+
+Demostration GIF:
+![GIF demostrating running native application and retrieving json response](./images/quarkus-jsonb-immutables-native.gif)
+
+Immutables Abstract Class:
+```java
+package com.example;
+
+import org.immutables.value.Value;
+
+import io.quarkus.runtime.annotations.RegisterForReflection;
+
+@Value.Immutable
+@RegisterForReflection
+public abstract class Greeting {
+    
+    public abstract String getMessage();
+}
+```
 
 ## Running the application in dev mode
 
@@ -46,14 +79,3 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 You can then execute your native executable with: `./target/quarkus-jsonb-immutables-native-1.0.0-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Related Guides
-
-
-## Provided Code
-
-### RESTEasy Reactive
-
-Easily start your Reactive RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
