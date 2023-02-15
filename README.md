@@ -1,3 +1,6 @@
+![build](https://github.com/josh-mchugh/quarkus-jsonb-immutables-native/actions/workflows/main.yml/badge.svg)
+[![codecov](https://codecov.io/gh/josh-mchugh/quarkus-jsonb-immutables-native/branch/main/graph/badge.svg?token=1I7KB7KBMZ)](https://codecov.io/gh/josh-mchugh/quarkus-jsonb-immutables-native)
+
 # Quarkus Jsonb Immutables Native
 
 This project was put together to verify that Jsonb and Immutables would work together with Quarkus Native builds. This project is an extension of the [Quarkus + Immutables + Jsonb Project](https://github.com/josh-mchugh/quarkus-immutables-jsonb).
